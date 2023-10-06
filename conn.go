@@ -92,7 +92,19 @@ func (conn *Connection) ConsistencyLevel() (string, error) {
 	}
 	return consistencyLevelNames[conn.consistencyLevel], nil
 }
-
+// PeerList returns the cached list of peers. Can be used in conjunction with Leader()
+func (conn *Connection) PeerList() ([]string, error) {
+	if conn.hasBeenClosed {
+		var ans []string
+		return ans, ErrClosed
+	}
+	p := conn.cluster.PeerList()
+	plist := make([]string, 0)
+	for _, peer := range p {
+		plist = append(plist, string(peer))
+	}
+	return plist, nil
+}
 // Leader tells the current leader of the cluster
 func (conn *Connection) Leader() (string, error) {
 	if conn.hasBeenClosed {

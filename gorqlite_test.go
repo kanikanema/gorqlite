@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rqlite/gorqlite"
+	"github.com/kanikanema/gorqlite"
 )
 
 var globalConnection *gorqlite.Connection

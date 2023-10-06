@@ -6,7 +6,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/rqlite/gorqlite"
+	"github.com/kanikanema/gorqlite"
 )
 
 func TestEnableClusterDiscovery(t *testing.T) {
